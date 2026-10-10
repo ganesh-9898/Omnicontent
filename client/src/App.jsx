@@ -38,20 +38,23 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen relative">
-      {/* Aurora background — fixed, full-screen, behind everything */}
+    <div className="min-h-screen relative overflow-x-hidden">
+      {/* Fluid Aurora background — fixed, full-screen, behind everything */}
       <div className="fixed inset-0 -z-10">
         <Aurora
-          colorStops={['#7cff67', '#B497CF', '#5227FF']}
-          blend={1}
-          amplitude={1.0}
-          speed={1.3}
+          colorStops={['#10b981', '#0d9488', '#06b6d4']}
+          blend={0.85}
+          amplitude={1.1}
+          speed={1.2}
         />
       </div>
 
+      {/* Ambient dot-grid overlay */}
+      <div className="bg-grid-pattern" />
+
       <Header />
 
-      <main className="max-w-5xl mx-auto px-4 py-10 space-y-10">
+      <main className="max-w-4xl mx-auto px-4 py-10 space-y-8">
         <InputForm
           onSubmit={handleSubmit}
           loading={loading}
@@ -59,11 +62,11 @@ export default function App() {
         />
 
         {error && (
-          <div className="card border-red-200 bg-red-50 p-5 flex items-start gap-3">
-            <span className="text-red-500 text-xl leading-none mt-0.5">⚠</span>
+          <div className="glass-panel rounded-2xl p-5 flex items-start gap-3 border-red-500/30">
+            <span className="text-red-400 text-xl leading-none mt-0.5">⚠</span>
             <div>
-              <p className="font-semibold text-red-700">Something went wrong</p>
-              <p className="text-red-600 text-sm mt-1">{error}</p>
+              <p className="font-semibold text-red-300">Something went wrong</p>
+              <p className="text-red-400 text-sm mt-1">{error}</p>
             </div>
           </div>
         )}
@@ -71,8 +74,8 @@ export default function App() {
         {results && <ContentTabs results={results} />}
       </main>
 
-      <footer className="text-center py-8 text-slate-400 text-sm border-t border-slate-100 mt-10">
-        OmniContent · AI-Powered Content Repurposing · Built with React + Express
+      <footer className="w-full text-center py-5 text-xs text-slate-400 border-t border-white/5 backdrop-blur-sm mt-10">
+        OmniContent AI &bull; Powered by Fluid Aurora &amp; Gemini API
       </footer>
     </div>
   );

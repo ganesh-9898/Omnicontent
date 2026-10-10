@@ -31,13 +31,13 @@ function TwitterContent({ tweets }) {
   return (
     <div className="space-y-3">
       {tweets.map((tweet, i) => (
-        <div key={i} className="flex gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100">
-          <span className="w-7 h-7 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
+        <div key={i} className="flex gap-3 p-4 bg-white/5 rounded-xl border border-white/8">
+          <span className="w-7 h-7 rounded-full bg-sky-500/20 text-sky-300 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 border border-sky-500/30">
             {i + 1}
           </span>
           <div className="flex-1">
-            <p className="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap">{tweet}</p>
-            <p className="text-xs text-slate-400 mt-2">{tweet.length} / 280 chars</p>
+            <p className="text-sm text-slate-200 leading-relaxed whitespace-pre-wrap">{tweet}</p>
+            <p className="text-xs text-slate-500 mt-2">{tweet.length} / 280 chars</p>
           </div>
         </div>
       ))}
@@ -47,25 +47,25 @@ function TwitterContent({ tweets }) {
 
 function LinkedinContent({ text }) {
   return (
-    <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
-      <p className="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap">{text}</p>
+    <div className="p-4 bg-white/5 rounded-xl border border-white/8">
+      <p className="text-sm text-slate-200 leading-relaxed whitespace-pre-wrap">{text}</p>
     </div>
   );
 }
 
 function VideoScriptContent({ script }) {
   const sections = [
-    { label: '🎣 Hook', key: 'hook', color: 'bg-purple-50 border-purple-200 text-purple-700' },
-    { label: '📋 Body', key: 'body', color: 'bg-indigo-50 border-indigo-200 text-indigo-700' },
-    { label: '📣 Call to Action', key: 'cta', color: 'bg-pink-50 border-pink-200 text-pink-700' },
+    { label: '🎣 Hook', key: 'hook', panelClass: 'bg-purple-950/40 border-purple-500/25', labelClass: 'text-purple-300' },
+    { label: '📋 Body', key: 'body', panelClass: 'bg-white/5 border-white/8', labelClass: 'text-slate-400' },
+    { label: '📣 Call to Action', key: 'cta', panelClass: 'bg-emerald-950/40 border-emerald-500/25', labelClass: 'text-emerald-300' },
   ];
 
   return (
     <div className="space-y-3">
-      {sections.map(({ label, key, color }) => (
-        <div key={key} className={`p-4 rounded-xl border ${color.split(' ').slice(0, 2).join(' ')}`}>
-          <p className={`text-xs font-bold uppercase tracking-wide mb-2 ${color.split(' ')[2]}`}>{label}</p>
-          <p className="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap">{script[key]}</p>
+      {sections.map(({ label, key, panelClass, labelClass }) => (
+        <div key={key} className={`p-4 rounded-xl border ${panelClass}`}>
+          <p className={`text-xs font-bold uppercase tracking-wide mb-2 ${labelClass}`}>{label}</p>
+          <p className="text-sm text-slate-200 leading-relaxed whitespace-pre-wrap">{script[key]}</p>
         </div>
       ))}
     </div>
@@ -76,21 +76,21 @@ function SeoContent({ metadata }) {
   return (
     <div className="space-y-4">
       {/* Meta Title */}
-      <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+      <div className="p-4 bg-white/5 rounded-xl border border-white/8">
         <p className="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Meta Title</p>
-        <p className="text-base font-semibold text-indigo-700">{metadata.metaTitle}</p>
-        <p className="text-xs text-slate-400 mt-1">{metadata.metaTitle.length} chars (ideal: 50–60)</p>
+        <p className="text-base font-semibold text-emerald-300">{metadata.metaTitle}</p>
+        <p className="text-xs text-slate-500 mt-1">{metadata.metaTitle.length} chars (ideal: 50–60)</p>
       </div>
 
       {/* Meta Description */}
-      <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+      <div className="p-4 bg-white/5 rounded-xl border border-white/8">
         <p className="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Meta Description</p>
-        <p className="text-sm text-slate-700 leading-relaxed">{metadata.metaDescription}</p>
-        <p className="text-xs text-slate-400 mt-1">{metadata.metaDescription.length} chars (ideal: 150–160)</p>
+        <p className="text-sm text-slate-200 leading-relaxed">{metadata.metaDescription}</p>
+        <p className="text-xs text-slate-500 mt-1">{metadata.metaDescription.length} chars (ideal: 150–160)</p>
       </div>
 
       {/* Tags */}
-      <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+      <div className="p-4 bg-white/5 rounded-xl border border-white/8">
         <p className="text-xs font-bold uppercase tracking-wide text-slate-400 mb-3 flex items-center gap-1.5">
           <Hash className="w-3.5 h-3.5" /> Keywords / Tags
         </p>
@@ -98,7 +98,7 @@ function SeoContent({ metadata }) {
           {metadata.tags.map((tag, i) => (
             <span
               key={i}
-              className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-medium"
+              className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-medium"
             >
               {tag}
             </span>
@@ -111,7 +111,7 @@ function SeoContent({ metadata }) {
 
 // ─── Main AssetCard ───────────────────────────────────────────────────────────
 
-export default function AssetCard({ tabKey, label, icon: Icon, color, accentBg, data }) {
+export default function AssetCard({ tabKey, label, icon: Icon, iconColor, accentBg, data }) {
   const [copied, setCopied] = useState(false);
 
   function handleCopy() {
@@ -125,15 +125,15 @@ export default function AssetCard({ tabKey, label, icon: Icon, color, accentBg, 
   const { chars, words } = getStats(tabKey, data);
 
   return (
-    <div className="card overflow-hidden">
+    <div className="glass-panel rounded-2xl overflow-hidden">
       {/* Card header */}
-      <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-gradient-to-r from-white to-slate-50">
+      <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
         <div className="flex items-center gap-3">
-          <div className={`w-8 h-8 rounded-lg ${accentBg} flex items-center justify-center shadow-sm`}>
+          <div className={`w-8 h-8 rounded-lg ${accentBg} flex items-center justify-center shadow-sm opacity-90`}>
             <Icon className="w-4 h-4 text-white" strokeWidth={2} />
           </div>
           <div>
-            <h3 className="font-semibold text-slate-800 text-sm">{label}</h3>
+            <h3 className="font-semibold text-slate-100 text-sm">{label}</h3>
             <p className="text-xs text-slate-400">
               {chars.toLocaleString()} chars · {words.toLocaleString()} words
             </p>
@@ -145,8 +145,8 @@ export default function AssetCard({ tabKey, label, icon: Icon, color, accentBg, 
           onClick={handleCopy}
           className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
             copied
-              ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
-              : 'bg-white border-slate-200 text-slate-600 hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50'
+              ? 'bg-emerald-950/50 border-emerald-500/30 text-emerald-300'
+              : 'bg-white/8 border-white/10 text-slate-300 hover:bg-white/15 hover:text-white'
           }`}
         >
           {copied ? (

@@ -7,7 +7,7 @@ const TABS = [
     tabKey: 'twitter',
     label: 'Twitter Thread',
     icon: Twitter,
-    color: 'text-sky-500',
+    iconColor: 'text-sky-400',
     accentBg: 'bg-sky-500',
   },
   {
@@ -15,24 +15,24 @@ const TABS = [
     tabKey: 'linkedin',
     label: 'LinkedIn Post',
     icon: Linkedin,
-    color: 'text-blue-600',
-    accentBg: 'bg-blue-600',
+    iconColor: 'text-blue-400',
+    accentBg: 'bg-blue-500',
   },
   {
     key: 'videoScript',
     tabKey: 'videoScript',
     label: 'Video Script',
     icon: Video,
-    color: 'text-purple-600',
-    accentBg: 'bg-purple-600',
+    iconColor: 'text-purple-400',
+    accentBg: 'bg-purple-500',
   },
   {
     key: 'seoMetadata',
     tabKey: 'seoMetadata',
     label: 'SEO Metadata',
     icon: Search,
-    color: 'text-emerald-600',
-    accentBg: 'bg-emerald-600',
+    iconColor: 'text-emerald-400',
+    accentBg: 'bg-emerald-500',
   },
 ];
 
@@ -43,21 +43,21 @@ export default function ContentTabs({ results }) {
     <section className="space-y-4">
       {/* Section heading */}
       <div>
-        <h2 className="text-xl font-bold text-slate-800">Generated Assets</h2>
-        <p className="text-slate-500 text-sm mt-1">
+        <h2 className="text-xl font-bold text-white">Generated Assets</h2>
+        <p className="text-slate-400 text-sm mt-1">
           {availableTabs.length} content asset{availableTabs.length !== 1 ? 's' : ''} generated
         </p>
       </div>
 
       {/* All assets stacked */}
       <div className="space-y-6">
-        {availableTabs.map(({ key, tabKey, label, icon, color, accentBg }) => (
+        {availableTabs.map(({ key, tabKey, label, icon, iconColor, accentBg }) => (
           <AssetCard
             key={key}
             tabKey={tabKey}
             label={label}
             icon={icon}
-            color={color}
+            iconColor={iconColor}
             accentBg={accentBg}
             data={results[key]}
           />
